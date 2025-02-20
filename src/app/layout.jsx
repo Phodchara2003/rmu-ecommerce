@@ -22,7 +22,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <h1 className="text-center pt-8 text-3xl font-bold ">Rootlayout</h1>
+        <h1 className="text-center pt-8 text-3xl font-bold text-red-500 hover:text-blue-500">PHODCHARA SHOP</h1>
+
+        
         {children}
       </body>
     </html>
