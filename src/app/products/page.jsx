@@ -1,11 +1,29 @@
-import React from 'react'
+'use client';
 
-const ProductsPage = () => {
+import React from "react";
+import { products, categories } from "@/lib/mock-data";
+// import { fetcher } from "@/lib/fetchdata";
+import useSWR from "swr";
+import ProductGrid from "../components/product-grid";
+import { fetcher } from "@/lib/fechData";
+const ProductPage = () => {
+  const { data, error, isLoading } = useSWR(`/api/products`, fetcher)
+  console.log("data", data);
+  console.log("error", error);  
+  console.log("isLoading", isLoading);
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error loading products</div>;
+  if (!data) return <div>No products found</div>; 
   return (
-    <div>
-      
+    <div className="container mx-auto px-4 py-8">
+      <div className="flex flex-col gap-3 lg:flex-row ">
+        <div className="lg">
+          <ProductGrid products={data.products}/>
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default ProductsPage
+export default ProductPage;

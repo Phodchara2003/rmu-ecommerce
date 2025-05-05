@@ -1,26 +1,37 @@
-"use client";
+'use client';
 import { Button } from "@/components/ui/button";
+import { signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const SinginButton = () => {
+  const router = useRouter()
   return (
     <div className="flex gap-1 justify-center">
       <Button
         onClick={() => {
-            return alert("You are signed in");
+          router.push("/login");
           }}
           
           className="bg-green-500 hover:bg-green-800"
           >
-          Sign in
+          เข้าสู่ระบบ
           </Button>
           <Button
           onClick={() => {
-          return alert("You are signed out");
+            router.push("/register");
         }}
-        className="bg-red-500 hover:bg-red-800"
+        variant="secondary"
       >
-        Sign out
+        สมัครสมาชิก
+      </Button>
+      <Button
+          onClick={() => {
+            signOut()
+        }}
+        variant="destructive"
+      >
+        ออกจากระบบ
       </Button>
     </div>
   );
