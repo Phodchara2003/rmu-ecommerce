@@ -1,5 +1,4 @@
 import pgPromise from "pg-promise";
-
 // กำหนดค่าพื้นฐานสำหรับเชื่อมต่อ
 
 const pgp = pgPromise({

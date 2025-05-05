@@ -15,7 +15,7 @@ export const authenController = {
       }
 
       const passwordHash = await bcrypt.hash(password, 10);
-      const result = await db.one("INSERT INTO public.users (email, password_hash , full_name) VALUES ($1, $2, $3) RETURNING id", [email, bcrypt.hashSync(password, 10), fullName]);
+      const result = await db.one("INSERT INTO public.users (email, password_hash , full_name) VALUES ($1, $2, $3) RETURNING id", [email,passwordHash, fullName]);
       return result
     } catch (error) {
       return error.message;

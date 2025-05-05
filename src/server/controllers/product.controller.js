@@ -4,7 +4,7 @@ export const productController = {
   getAllProducts: async () => {
     try {
       // เปลี่ยนจาก db.manyOrNone เป็น db.query
-      const result = await db.query("SELECT * FROM products");
+      const result = await db.manyOrNone("SELECT * FROM products");
       return result.rows; // @vercel/postgres คืนค่า result.rows แทน
     } catch (error) {
       console.error("Error fetching products:", error);
